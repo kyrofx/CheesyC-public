@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    Create Account
+  {% if error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+  <form method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <label for="eventID">Event ID:</label>
+    <input type="text" id="eventID" name="eventID" required>
+    <br>
+    <input type="submit" value="Create Account">
+  </form>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <title>254 Carer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            top: 30px;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        logout {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>254 Carer</h1>
+    </header>
+    <table>
+        <thead>
+            <tr>
+                <th>Request</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for issue in issues %}
+            <tr>
+                <td>
+                    <div class="request">
+                        {{ issue[1] }}, Issue: {{ issue[2] }}
+                        <button class="toggle-details">Show Details</button>
+                        <div class="details" style="display: none;">{{ issue[3] }}</div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        // Add event listeners to toggle the visibility of the details
+        var toggleButtons = document.querySelectorAll(".toggle-details");
+        for (var i = 0; i < toggleButtons.length; i++) {
+            toggleButtons[i].addEventListener("click", function() {
+                var details = this.parentNode.querySelector(".details");
+                if (details.style.display === "none") {
+                    details.style.display = "block";
+                    this.textContent = "Hide Details";
+                } else {
+                    details.style.display = "none";
+                    this.textContent = "Show Details";
+                }
+            });
+        }
+    </script>
+</body>
+{% endblock %}

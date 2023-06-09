@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <title>Cheesy Care</title>
+</head>
+
+    <style>
+    form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Open Sans', sans-serif;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input[type="number"],
+select,
+textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  background-color: #0070FF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #003375;
+}
+
+/* Style the form elements on focus */
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+    </style>
+
+<body>
+    <h1>Cheesy Care</h1>
+    <div style="display: flex; justify-content: center;">
+    <form action="/submit" method="post">
+        <label for="team_number">Team #:</label>
+        <input type="number" id="team_number" name="team_number"><br><br>
+        <label for="issue">Issue:</label>
+        <select id="issue" name="issue">
+            <option value="Software (Auto)">Software (Auto)</option>
+            <option value="Software (General">Software (General</option>
+            <option value="Software (Drive)">Software (Drive)</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Wiring">Wiring</option>
+            <option value="Misc. Hardware">Misc. Hardware</option>
+            <option value="Materials request">Materials request</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+        <label for="details">Details:</label><br>
+        <textarea id="details" name="details" rows="1" cols="50"></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    </div>
+</body>
+{% endblock %}

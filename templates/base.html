@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="{{ url_for('static', filename='/js/togglescript.js') }}"></script>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+  <style>
+    /* Header styles */
+    header {
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+        font-family: 'Open Sans', sans-serif;
+    }
+    header img {
+      height: 40px;
+      width: 70px;
+        font-family: 'Open Sans', sans-serif;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: normal;
+      text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        margin-right: auto;
+        margin-left: 10px;
+    }
+    header a {
+      text-decoration: none;
+      color: black;
+        font-family: 'Open Sans', sans-serif;
+    }
+    /* Content styles */
+    main {
+      background-color: #f5f5f5;
+      padding: 20px;
+        font-family: 'Open Sans', sans-serif;
+    }
+    /* Footer styles */
+    footer {
+      background-color: #f5f5f5;
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .current-user {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.current-user img {
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.current-user a {
+  text-decoration: none;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  padding: 12px 16px;
+  margin-top: 5px;
+  font-family: 'Open Sans', sans-serif;
+    right: 0; /* add this line to adjust the position of the dropdown menu */
+}
+
+.dropdown:hover .dropdown-content {
+  display: none;
+}
+
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 6px 0;
+  text-decoration: none;
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+    display: block;
+}
+
+.dropdown-content a:hover {
+  /*background-color: #f1f1f1;*/
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.show{
+    display: block;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">
+      <img src="https://hours.team254.com/imgs/Compressed-254-Swoosh.png" alt="Logo">
+    </a>
+    <h1>Cheesy Care +</h1>
+
+
+                {% if loggedin %}
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">{{ user }}</a>
+                    <div class="dropdown-content" id="dropdown">
+                        <a href="/logout">Logout</a>
+                        <a href="/carer">Sheet</a>
+                        {% if is_mentor == "is_mentor" %}
+                        <a href="/create_account">Create Account</a>
+                        <a href="/delete_account">Delete Account</a>
+                        {% endif %}
+                    </div>
+                </li>
+                {% else %}
+                <li><a href="/login">Login</a></li>
+                {% endif %}
+
+
+    </a>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    Team 254 Cheesy Care summer project by Eddie Gu
+  </footer>
+</body>
+</html>

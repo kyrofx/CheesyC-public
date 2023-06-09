@@ -1,0 +1,12 @@
+body {
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: white;
+  padding: 10px;
+}
+
+.logo img {
+  height: 50px;
+}
